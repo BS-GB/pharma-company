@@ -1,0 +1,50 @@
+﻿/* =========================================================
+   AL-RAIDAH SHARED UTILITIES
+   Reusable layout helpers; page-specific designs stay scoped
+========================================================= */
+
+.container-site {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+
+.surface {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.transition-theme {
+  transition:
+    background-color var(--motion-normal) var(--ease-standard),
+    border-color var(--motion-normal) var(--ease-standard),
+    color var(--motion-normal) var(--ease-standard),
+    box-shadow var(--motion-normal) var(--ease-standard);
+}
+
+/* Shared keyboard and touch-friendly interaction affordance. */
+.interactive-surface {
+  transition:
+    transform var(--motion-normal) var(--ease-standard),
+    border-color var(--motion-normal) var(--ease-standard),
+    background-color var(--motion-normal) var(--ease-standard),
+    box-shadow var(--motion-normal) var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .interactive-surface:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 34%, var(--color-border));
+    box-shadow: var(--shadow-card);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transition-theme,
+  .interactive-surface {
+    transition: none !important;
+  }
+
+  .interactive-surface:hover {
+    transform: none !important;
+  }
+}

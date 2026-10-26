@@ -1,0 +1,689 @@
+﻿/* =========================================================
+   ANIMATION UTILITIES & GLOBAL TRANSITIONS
+========================================================= */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* =========================================================
+   CINEMATIC SPLASH SCREEN & TRANSITIONS
+========================================================= */
+
+.raidah-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f8fcfe;
+  color: #0f172a;
+  isolation: isolate;
+  pointer-events: all;
+  transition: visibility 850ms step-end;
+}
+
+.dark .raidah-splash {
+  background: #030c14;
+  color: #ffffff;
+}
+
+/* طبقات الستار السينمائي لفتح الموقع عند الانتهاء */
+.raidah-splash__shutter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50.5%;
+  background: inherit;
+  z-index: 10;
+  transition: transform 850ms cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.raidah-splash__shutter--top {
+  top: 0;
+  transform-origin: top center;
+}
+
+.raidah-splash__shutter--bottom {
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+/* حالة الإغلاق والانسحاب */
+.raidah-splash--closing {
+  pointer-events: none;
+}
+
+.raidah-splash--closing .raidah-splash__shutter--top {
+  transform: translateY(-100%);
+}
+
+.raidah-splash--closing .raidah-splash__shutter--bottom {
+  transform: translateY(100%);
+}
+
+.raidah-splash--closing .raidah-splash__stage {
+  opacity: 0;
+  transform: scale(1.15) translateY(-20px);
+  filter: blur(12px);
+  transition:
+    opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 750ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 600ms ease;
+}
+
+.raidah-splash--closing .raidah-splash__loading,
+.raidah-splash--closing .raidah-splash__background {
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+/* =========================================================
+   BACKGROUND GLOWS & GRIDS
+========================================================= */
+
+.raidah-splash__background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.raidah-splash__glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(85px);
+  pointer-events: none;
+}
+
+.raidah-splash__glow--main {
+  width: 480px;
+  height: 480px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(24, 154, 208, 0.18);
+  animation: raidah-main-glow 4.5s ease-in-out infinite;
+}
+
+.raidah-splash__glow--top {
+  width: 320px;
+  height: 320px;
+  left: 10%;
+  top: -100px;
+  background: rgba(66, 181, 227, 0.12);
+  animation: raidah-floating-glow 8s ease-in-out infinite;
+}
+
+.raidah-splash__glow--bottom {
+  width: 360px;
+  height: 360px;
+  right: 10%;
+  bottom: -120px;
+  background: rgba(17, 126, 172, 0.12);
+  animation: raidah-floating-glow 9s 1s ease-in-out infinite;
+}
+
+.raidah-splash__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-image:
+    linear-gradient(rgba(24, 154, 208, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 154, 208, 0.05) 1px, transparent 1px);
+  background-size: 65px 65px;
+  animation: raidah-grid-in 1.5s 0.2s ease forwards;
+}
+
+.raidah-splash__lines {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.raidah-splash__lines span {
+  position: absolute;
+  display: block;
+  width: 45vw;
+  min-width: 300px;
+  height: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(24, 154, 208, 0.2), #189ad0, rgba(24, 154, 208, 0.2), transparent);
+}
+
+.raidah-splash__lines span:nth-child(1) {
+  top: 25%;
+  left: -45%;
+  transform: rotate(-6deg);
+  animation: raidah-line-move 3.2s 0.1s ease-in-out forwards;
+}
+
+.raidah-splash__lines span:nth-child(2) {
+  top: 75%;
+  right: -45%;
+  transform: rotate(-6deg);
+  animation: raidah-line-move-rev 3.4s 0.3s ease-in-out forwards;
+}
+
+/* =========================================================
+   CENTER STAGE & LOGO
+========================================================= */
+
+.raidah-splash__stage {
+  position: relative;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.raidah-splash__orbit {
+  position: absolute;
+  left: 50%;
+  top: 85px;
+  border: 1px solid rgba(24, 154, 208, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0;
+}
+
+.raidah-splash__orbit--one {
+  width: 250px;
+  height: 250px;
+  animation: raidah-orbit-turn 3s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.raidah-splash__orbit--two {
+  width: 320px;
+  height: 320px;
+  border-color: rgba(24, 154, 208, 0.1);
+  animation: raidah-orbit-turn-rev 3.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.raidah-splash__logo-frame {
+  position: relative;
+  z-index: 5;
+  width: 155px;
+  height: 155px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px) scale(0.85);
+  animation: raidah-logo-enter 0.85s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.raidah-splash__logo-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 36px;
+  background: rgba(24, 154, 208, 0.28);
+  filter: blur(28px);
+  animation: raidah-logo-glow 2.5s ease-in-out infinite;
+}
+
+.raidah-splash__logo {
+  position: relative;
+  width: 135px;
+  height: 135px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow:
+    0 25px 70px rgba(24, 154, 208, 0.22),
+    0 0 0 1px rgba(24, 154, 208, 0.16);
+}
+
+.dark .raidah-splash__logo {
+  background: #f8fafc;
+}
+
+.raidah-splash__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =========================================================
+   ARABIC LETTERS SEPARATION & WORD FUSION (انبثاق ثم اندماج)
+========================================================= */
+
+.raidah-splash__brand {
+  position: relative;
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* مسار خروج الحروف المنفصلة */
+.raidah-splash__letters-rail {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px; /* مسافة واضحة بين الحروف: ا  ل  ر  ا  ئ  د  ة */
+  white-space: nowrap;
+  transition:
+    gap 550ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 550ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 450ms ease,
+    filter 450ms ease;
+}
+
+/* الحرف الفردي المنبثق من خلف الشعار نحو اليمين */
+.raidah-splash__char {
+  display: inline-block;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  line-height: 1.1;
+  font-weight: 850;
+  color: var(--color-text);
+  opacity: 0;
+  filter: blur(14px);
+  /* نقطة البداية خلف الشعار */
+  transform: translate3d(calc(-90px * var(--dir-factor, 1)), -35px, -80px) scale(0.35);
+  animation: raidahCharEmergeToRight 720ms cubic-bezier(0.18, 0.9, 0.2, 1) forwards;
+  animation-delay: calc(750ms + (var(--char-index) * 115ms));
+  will-change: transform, opacity, filter;
+}
+
+.dark .raidah-splash__char {
+  color: #ffffff;
+}
+
+/* الكلمة الكاملة المندمجة المتصلة كتابياً: "الرائدة" */
+.raidah-splash__word-fused {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(0.92);
+  font-size: clamp(2.7rem, 6.2vw, 4.3rem);
+  line-height: 1.1;
+  font-weight: 850;
+  color: var(--color-text);
+  opacity: 0;
+  filter: blur(12px);
+  white-space: nowrap;
+  pointer-events: none;
+  transition:
+    opacity 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 550ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 500ms ease,
+    text-shadow 500ms ease;
+}
+
+.dark .raidah-splash__word-fused {
+  color: #ffffff;
+}
+
+/* =========================================================
+   حالة الاندماج (FUSED STATE)
+========================================================= */
+
+/* تقلص المسافات وانسحاب الحروف المنفصلة للمركز */
+.raidah-splash__brand--fused .raidah-splash__letters-rail {
+  gap: 0px;
+  transform: scale(0.96);
+  opacity: 0;
+  filter: blur(8px);
+}
+
+/* ظهور كلمة "الرائدة" المتصلة بنعومة فائقة مع إضاءة خفيفة */
+.raidah-splash__brand--fused .raidah-splash__word-fused {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(-50%) scale(1);
+  text-shadow:
+    0 0 26px rgba(24, 154, 208, 0.45),
+    0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* خط الإضاءة التابع */
+.raidah-splash__brand-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px auto 10px;
+  opacity: 0;
+  transform: scaleX(0.2);
+  animation: raidahLineExpand 600ms 1900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.raidah-splash__brand-line span:first-child {
+  width: 48px;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent, #189ad0, #42b5e3);
+  border-radius: 999px;
+}
+
+.raidah-splash__brand-line span:last-child {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #189ad0;
+  box-shadow: 0 0 14px rgba(24, 154, 208, 0.9);
+}
+
+.raidah-splash__brand-subtitle {
+  color: #189ad0;
+  font-size: 1rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: raidah-fade-rise 650ms 2050ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.raidah-splash__statement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 24px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: raidah-fade-rise 600ms 2200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.raidah-splash__statement p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.dark .raidah-splash__statement p {
+  color: #a0aec0;
+}
+
+.raidah-splash__statement-line {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(24, 154, 208, 0.6));
+}
+
+.raidah-splash__statement-line:last-child {
+  transform: rotate(180deg);
+}
+
+/* شريط التحميل السفلي */
+.raidah-splash__loading {
+  position: absolute;
+  left: 50%;
+  bottom: 42px;
+  z-index: 12;
+  width: min(290px, 72vw);
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0;
+  animation: raidah-fade-rise 0.5s 1.1s ease forwards;
+}
+
+.raidah-splash__loading span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--color-text-muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.raidah-splash__loading-track {
+  width: 100%;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(24, 154, 208, 0.12);
+}
+
+.raidah-splash__loading-track div {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #42b5e3, #189ad0, #117eac);
+  animation: raidah-loading-progress 2.3s 0.35s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* =========================================================
+   KEYFRAMES
+========================================================= */
+
+@keyframes raidah-main-glow {
+  0%, 100% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes raidah-floating-glow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(25px, 35px, 0);
+  }
+}
+
+@keyframes raidah-grid-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes raidah-line-move {
+  0% {
+    opacity: 0;
+    left: -45%;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    left: 110%;
+  }
+}
+
+@keyframes raidah-line-move-rev {
+  0% {
+    opacity: 0;
+    right: -45%;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    right: 110%;
+  }
+}
+
+@keyframes raidah-orbit-turn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1) rotate(180deg);
+  }
+}
+
+@keyframes raidah-orbit-turn-rev {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+  }
+  40% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1) rotate(-180deg);
+  }
+}
+
+@keyframes raidah-logo-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(26px) scale(0.8);
+    filter: blur(8px);
+  }
+  65% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes raidah-logo-glow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes raidahCharEmergeToRight {
+  0% {
+    opacity: 0;
+    filter: blur(16px);
+    transform: translate3d(calc(-90px * var(--dir-factor, 1)), -35px, -80px) scale(0.35);
+  }
+  55% {
+    opacity: 0.9;
+    filter: blur(3px);
+    transform: translate3d(calc(10px * var(--dir-factor, 1)), 2px, 10px) scale(1.06);
+  }
+  80% {
+    opacity: 1;
+    filter: blur(1px);
+    transform: translate3d(calc(-2px * var(--dir-factor, 1)), 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes raidahLineExpand {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes raidah-fade-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes raidah-loading-progress {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 65%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   PAGE ENTRY REVEAL (دخول محتوى الموقع بعد انتهاء الستار)
+========================================================= */
+
+body.raidah-splash-complete main {
+  animation: raidahPageEntrance 950ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes raidahPageEntrance {
+  from {
+    opacity: 0.6;
+    transform: scale(0.985) translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}

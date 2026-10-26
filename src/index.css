@@ -1,0 +1,120 @@
+﻿@import "tailwindcss";
+
+
+@import "./styles/utilities.css";
+@import "./styles/animations.css";
+@import "./styles/hero.css";
+@import "./styles/home-sections.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-primary: #189ad0;
+  --color-primary-dark: #117eac;
+  --color-primary-light: #42b5e3;
+  --color-primary-soft: #eaf7fc;
+
+  --color-background: #ffffff;
+  --color-background-soft: #f6fafc;
+
+  --color-surface: #ffffff;
+  --color-surface-soft: #f1f7fa;
+
+  --color-text: #102a3a;
+  --color-text-secondary: #536b79;
+  --color-text-muted: #7b909c;
+
+  --color-border: #dcebf2;
+
+  --shadow-soft: 0 8px 30px rgba(16, 42, 58, 0.08);
+  --shadow-primary: 0 10px 35px rgba(24, 154, 208, 0.18);
+
+  font-family:
+    "Plus Jakarta Sans",
+    "IBM Plex Sans Arabic",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+
+  color: var(--color-text);
+  background: var(--color-background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark {
+  --color-background: #07151d;
+  --color-background-soft: #0b202b;
+
+  --color-surface: #0d2632;
+  --color-surface-soft: #12303d;
+
+  --color-text: #f1f8fb;
+  --color-text-secondary: #b8ccd5;
+  --color-text-muted: #8da6b2;
+
+  --color-border: #214452;
+
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.25);
+  --shadow-primary: 0 10px 35px rgba(24, 154, 208, 0.2);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: inherit;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+

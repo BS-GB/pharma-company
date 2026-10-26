@@ -1,0 +1,611 @@
+/* ========================================
+   قسم المسؤولية الاجتماعية — Raidah Social Preview
+   نسخة محسّنة احترافية (RTL-First)
+======================================== */
+
+.raidah-social-preview {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(80px, 9vw, 120px) 0;
+    background: var(--color-background);
+    isolation: isolate;
+}
+
+.raidah-social-preview__container {
+    width: min(100% - 2rem, 1280px);
+    margin-inline: auto;
+}
+
+/* ========================================
+   Header
+======================================== */
+
+.raidah-social-preview__header {
+    margin-bottom: clamp(45px, 5vw, 65px);
+}
+
+.raidah-social-preview__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.raidah-social-preview__eyebrow-line {
+    width: 44px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--color-primary);
+}
+
+.raidah-social-preview__heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.65fr);
+    align-items: end;
+    gap: clamp(30px, 5vw, 70px);
+}
+
+.raidah-social-preview__heading h2 {
+    max-width: 850px;
+    margin: 0;
+
+    color: var(--color-text);
+    font-size: clamp(2.2rem, 5.4vw, 5rem);
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+
+    text-wrap: balance;
+}
+
+/* ↓↓ الخط الفرعي في الهيدر — أوضح وأكبر ↓↓ */
+.raidah-social-preview__heading p {
+    max-width: 500px;
+    margin: 0;
+
+    color: var(--color-text-secondary);
+    font-size: clamp(1rem, 1.1vw, 1.1rem);
+    font-weight: 500;
+    line-height: 2.05;
+    letter-spacing: 0.005em;
+
+    text-wrap: pretty;
+}
+
+/* ========================================
+   Main
+======================================== */
+
+.raidah-social-preview__main {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* ========================================
+   Visual
+======================================== */
+
+.raidah-social-preview__visual {
+    position: relative;
+    min-height: 560px;
+    overflow: hidden;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: clamp(28px, 3.4vw, 44px);
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(circle at 75% 20%,
+            rgba(255, 255, 255, 0.18),
+            transparent 30%),
+        linear-gradient(145deg,
+            #189ad0 0%,
+            #117eac 100%);
+}
+
+.raidah-social-preview__visual-pattern {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.07) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.07) 1px,
+            transparent 1px);
+
+    background-size: 46px 46px;
+
+    -webkit-mask-image: linear-gradient(135deg, black 0%, transparent 75%);
+    mask-image: linear-gradient(135deg, black 0%, transparent 75%);
+
+    pointer-events: none;
+}
+
+.raidah-social-preview__visual::before {
+    position: absolute;
+    content: "";
+
+    width: 500px;
+    height: 500px;
+
+    top: -280px;
+    inset-inline-end: -230px;
+
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.raidah-social-preview__visual::after {
+    position: absolute;
+    content: "";
+
+    width: 320px;
+    height: 320px;
+
+    top: -190px;
+    inset-inline-end: -140px;
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.raidah-social-preview__visual-circle {
+    position: absolute;
+
+    top: clamp(25px, 3.4vw, 44px);
+    inset-inline-start: clamp(25px, 3.4vw, 44px);
+
+    display: grid;
+    place-items: center;
+
+    width: 94px;
+    height: 94px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+
+    color: #ffffff;
+}
+
+.raidah-social-preview__visual-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 430px;
+}
+
+.raidah-social-preview__visual-content span {
+    display: block;
+
+    margin-bottom: 14px;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+
+    opacity: 0.85;
+}
+
+.raidah-social-preview__visual-content strong {
+    display: block;
+
+    font-size: clamp(1.9rem, 3.8vw, 3.6rem);
+    line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+}
+
+.raidah-social-preview__sparkle {
+    position: absolute;
+    z-index: 2;
+
+    bottom: clamp(30px, 3.4vw, 46px);
+    inset-inline-end: clamp(30px, 3.4vw, 45px);
+
+    opacity: 0.55;
+    color: #ffffff;
+
+    pointer-events: none;
+}
+
+/* ========================================
+   Sections
+======================================== */
+
+.raidah-social-preview__sections {
+    display: flex;
+    flex-direction: column;
+}
+
+.raidah-social-preview__section {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr) 28px;
+    align-items: center;
+
+    flex: 1;
+
+    min-height: 185px;
+    padding: 30px 34px;
+
+    border-inline-start: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+
+    color: inherit;
+    text-decoration: none;
+
+    transition:
+        background-color 450ms ease,
+        padding 550ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.raidah-social-preview__section:last-child {
+    border-bottom: 0;
+}
+
+.raidah-social-preview__section--active:hover,
+.raidah-social-preview__section--active:focus-visible {
+    padding-inline: 40px;
+    background: rgba(24, 154, 208, 0.035);
+}
+
+.raidah-social-preview__section--active:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+}
+
+.raidah-social-preview__section--pending {
+    opacity: 0.62;
+    cursor: not-allowed;
+}
+
+.raidah-social-preview__section-number {
+    align-self: start;
+
+    padding-top: 3px;
+
+    color: var(--color-primary);
+
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+
+    font-variant-numeric: tabular-nums;
+}
+
+.raidah-social-preview__section-content {
+    padding-inline-end: 25px;
+}
+
+.raidah-social-preview__section-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-bottom: 12px;
+}
+
+.raidah-social-preview__section-title h3 {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.raidah-social-preview__status {
+    padding: 5px 11px;
+
+    border-radius: 999px;
+
+    color: var(--color-primary);
+
+    background: rgba(24, 154, 208, 0.08);
+
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+
+    white-space: nowrap;
+}
+
+/* ↓↓ الخط الفرعي داخل الأقسام — أوضح وأكبر ↓↓ */
+.raidah-social-preview__section-content p {
+    max-width: 520px;
+
+    margin: 0;
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.95;
+    letter-spacing: 0.003em;
+
+    text-wrap: pretty;
+}
+
+.raidah-social-preview__section-arrow {
+    display: grid;
+    place-items: center;
+
+    color: var(--color-primary);
+
+    opacity: 0;
+
+    transform: translateX(var(--raidah-social-arrow-offset, 4px));
+
+    transition:
+        opacity 350ms ease,
+        transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.raidah-social-preview__section--active:hover .raidah-social-preview__section-arrow,
+.raidah-social-preview__section--active:focus-visible .raidah-social-preview__section-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ========================================
+   Footer
+======================================== */
+
+.raidah-social-preview__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding-top: 32px;
+}
+
+/* ↓↓ الخط الفرعي في الفوتر — أوضح ↓↓ */
+.raidah-social-preview__footer p {
+    margin: 0;
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.98rem;
+    font-weight: 500;
+    line-height: 1.85;
+    letter-spacing: 0.003em;
+}
+
+.raidah-social-preview__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--color-primary);
+
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition:
+        gap 350ms cubic-bezier(0.16, 1, 0.3, 1),
+        color 300ms ease;
+}
+
+.raidah-social-preview__link:hover,
+.raidah-social-preview__link:focus-visible {
+    gap: 15px;
+    color: var(--color-primary-dark);
+}
+
+.raidah-social-preview__link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
+.raidah-social-preview__link svg {
+    transition:
+        transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.raidah-social-preview__link:hover svg,
+.raidah-social-preview__link:focus-visible svg {
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   Dark Mode
+======================================== */
+
+.dark .raidah-social-preview__section--active:hover,
+.dark .raidah-social-preview__section--active:focus-visible {
+    background: rgba(24, 154, 208, 0.055);
+}
+
+.dark .raidah-social-preview__status {
+    background: rgba(24, 154, 208, 0.12);
+}
+
+/* في الوضع الداكن: ارفع تباين النص الفرعي */
+.dark .raidah-social-preview__heading p,
+.dark .raidah-social-preview__section-content p,
+.dark .raidah-social-preview__footer p {
+    color: #b6c2d1;
+}
+
+/* ========================================
+   Responsive — 1050px
+======================================== */
+
+@media (max-width: 1050px) {
+    .raidah-social-preview__heading {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .raidah-social-preview__main {
+        grid-template-columns: 1fr;
+    }
+
+    .raidah-social-preview__visual {
+        min-height: 420px;
+    }
+
+    .raidah-social-preview__section {
+        border-inline-start: 0;
+    }
+}
+
+/* ========================================
+   Responsive — 700px
+======================================== */
+
+@media (max-width: 700px) {
+    .raidah-social-preview__heading h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        line-height: 1.15;
+    }
+
+    .raidah-social-preview__heading p {
+        font-size: 0.98rem;
+        line-height: 2;
+    }
+
+    .raidah-social-preview__visual {
+        min-height: 380px;
+    }
+
+    .raidah-social-preview__visual-content strong {
+        font-size: clamp(1.7rem, 7vw, 2.25rem);
+    }
+
+    .raidah-social-preview__section {
+        grid-template-columns: 48px minmax(0, 1fr) 20px;
+
+        min-height: 170px;
+        padding: 26px 22px;
+    }
+
+    .raidah-social-preview__section--active:hover,
+    .raidah-social-preview__section--active:focus-visible {
+        padding-inline: 22px;
+    }
+
+    .raidah-social-preview__section-content {
+        padding-inline-end: 15px;
+    }
+
+    .raidah-social-preview__section-title h3 {
+        font-size: 1.12rem;
+    }
+
+    .raidah-social-preview__section-content p {
+        font-size: 0.92rem;
+        line-height: 1.9;
+    }
+
+    .raidah-social-preview__section-arrow {
+        opacity: 0.7;
+    }
+
+    .raidah-social-preview__footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .raidah-social-preview__footer p {
+        font-size: 0.94rem;
+    }
+}
+
+/* ========================================
+   Responsive — 430px
+======================================== */
+
+@media (max-width: 430px) {
+    .raidah-social-preview__container {
+        width: min(100% - 1.25rem, 1280px);
+    }
+
+    .raidah-social-preview__visual {
+        min-height: 340px;
+    }
+
+    .raidah-social-preview__visual-circle {
+        width: 78px;
+        height: 78px;
+    }
+
+    .raidah-social-preview__section {
+        grid-template-columns: 40px minmax(0, 1fr) 18px;
+        padding: 24px 18px;
+    }
+
+    .raidah-social-preview__section--active:hover,
+    .raidah-social-preview__section--active:focus-visible {
+        padding-inline: 18px;
+    }
+
+    .raidah-social-preview__heading p,
+    .raidah-social-preview__section-content p,
+    .raidah-social-preview__footer p {
+        font-size: 0.92rem;
+    }
+}
+
+/* ========================================
+   Reduced Motion
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .raidah-social-preview__section,
+    .raidah-social-preview__section-arrow,
+    .raidah-social-preview__link,
+    .raidah-social-preview__link svg {
+        transition: none !important;
+    }
+
+    .raidah-social-preview__section--active:hover,
+    .raidah-social-preview__section--active:focus-visible {
+        padding-inline: 30px;
+    }
+
+    .raidah-social-preview__section-arrow {
+        transform: none;
+    }
+
+    .raidah-social-preview__link:hover,
+    .raidah-social-preview__link:focus-visible {
+        gap: 10px;
+    }
+
+    .raidah-social-preview__link:hover svg,
+    .raidah-social-preview__link:focus-visible svg {
+        transform: none;
+    }
+}

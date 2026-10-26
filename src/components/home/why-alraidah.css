@@ -1,0 +1,475 @@
+.raidah-why {
+    position: relative;
+    overflow: hidden;
+    padding: 125px 0 115px;
+    background: var(--color-background);
+    isolation: isolate;
+}
+
+.raidah-why__container {
+    position: relative;
+    z-index: 2;
+    width: min(100% - 2rem, 1280px);
+    margin-inline: auto;
+}
+
+/* ========================================
+   Background
+======================================== */
+
+.raidah-why__background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.raidah-why__background-circle {
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    top: -390px;
+    inset-inline-end: -230px;
+    border: 1px solid rgba(24, 154, 208, 0.07);
+    border-radius: 50%;
+}
+
+.raidah-why__background-circle::after {
+    position: absolute;
+    content: "";
+    inset: 75px;
+    border: 1px solid rgba(24, 154, 208, 0.05);
+    border-radius: 50%;
+}
+
+.raidah-why__background-glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    bottom: -260px;
+    inset-inline-start: -220px;
+    border-radius: 50%;
+    background: rgba(24, 154, 208, 0.035);
+    filter: blur(20px);
+}
+
+/* ========================================
+   Header
+======================================== */
+
+.raidah-why__header {
+    margin-bottom: 65px;
+}
+
+.raidah-why__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 23px;
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.raidah-why__eyebrow>span:first-child {
+    width: 44px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--color-primary);
+}
+
+.raidah-why__header-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.7fr);
+    align-items: end;
+    gap: 70px;
+}
+
+.raidah-why__header-content h2 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 850;
+    letter-spacing: -0.04em;
+}
+
+/* النص الفرعي للعنوان */
+.raidah-why__header-content p {
+    max-width: 520px;
+    margin: 0;
+    color: var(--color-text);
+    opacity: 0.88;
+    font-size: 1.05rem;
+    font-weight: 450;
+    line-height: 1.85;
+}
+
+/* ========================================
+   Advantages Grid
+======================================== */
+
+.raidah-why__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.raidah-why__feature {
+    position: relative;
+    min-height: 310px;
+    padding: 34px 28px 38px;
+    border-inline-end: 1px solid var(--color-border);
+    transition:
+        background-color 500ms ease,
+        transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.raidah-why__feature:last-child {
+    border-inline-end: 0;
+}
+
+.raidah-why__feature:hover {
+    background: rgba(24, 154, 208, 0.025);
+    transform: translateY(-4px);
+}
+
+.raidah-why__feature-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 55px;
+}
+
+.raidah-why__feature-icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border: 1px solid rgba(24, 154, 208, 0.2);
+    border-radius: 50%;
+    color: var(--color-primary);
+    background: rgba(24, 154, 208, 0.035);
+    transition:
+        transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 450ms ease,
+        border-color 450ms ease;
+}
+
+.raidah-why__feature:hover .raidah-why__feature-icon {
+    transform: scale(1.08) rotate(-4deg);
+    background: rgba(24, 154, 208, 0.08);
+    border-color: rgba(24, 154, 208, 0.35);
+}
+
+.raidah-why__feature-number {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    opacity: 0.75;
+}
+
+.raidah-why__feature-content h3 {
+    margin: 0 0 12px;
+    color: var(--color-text);
+    font-size: 1.25rem;
+    line-height: 1.35;
+    font-weight: 850;
+    letter-spacing: -0.02em;
+}
+
+/* النص الفرعي للبطاقات */
+.raidah-why__feature-content p {
+    max-width: 270px;
+    margin: 0;
+    color: var(--color-text);
+    opacity: 0.85;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+.raidah-why__feature-line {
+    position: absolute;
+    width: 32px;
+    height: 2px;
+    bottom: 30px;
+    inset-inline-start: 28px;
+    background: var(--color-primary);
+    opacity: 0.25;
+    transition:
+        width 650ms cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 400ms ease;
+}
+
+.raidah-why__feature:hover .raidah-why__feature-line {
+    width: 65px;
+    opacity: 1;
+}
+
+/* ========================================
+   Numbers Header
+======================================== */
+
+.raidah-why__numbers-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 85px;
+    margin-bottom: 28px;
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.raidah-why__numbers-header i {
+    width: 55px;
+    height: 1px;
+    background: var(--color-primary);
+}
+
+/* ========================================
+   Numbers Grid
+======================================== */
+
+.raidah-why__numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.raidah-why__number-item {
+    position: relative;
+    min-height: 200px;
+    padding: 34px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.raidah-why__number-item:not(:last-child)::after {
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 55%;
+    top: 22.5%;
+    inset-inline-end: 0;
+    background: var(--color-border);
+}
+
+.raidah-why__number-value {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    min-height: 72px;
+    direction: ltr;
+}
+
+.raidah-why__number-value strong {
+    color: var(--color-primary);
+    font-size: clamp(3rem, 4.5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 850;
+    letter-spacing: -0.05em;
+    font-variant-numeric: tabular-nums;
+}
+
+.raidah-why__number-value span {
+    margin-inline-start: 4px;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+/* النص الفرعي للإحصائيات */
+.raidah-why__number-item p {
+    max-width: 230px;
+    margin: 14px auto 0;
+    color: var(--color-text);
+    opacity: 0.9;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* بطاقة الوصول */
+.raidah-why__reach-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 72px;
+}
+
+.raidah-why__reach-value strong {
+    color: var(--color-primary);
+    font-size: clamp(2.2rem, 3.2vw, 3.2rem);
+    line-height: 1;
+    font-weight: 850;
+    letter-spacing: -0.03em;
+}
+
+.raidah-why__reach-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    box-shadow: 0 0 0 7px rgba(24, 154, 208, 0.12);
+}
+
+.raidah-why__number-item--reach p {
+    max-width: 220px;
+}
+
+/* ========================================
+   Dark Mode
+======================================== */
+
+.dark .raidah-why__feature:hover {
+    background: rgba(24, 154, 208, 0.055);
+}
+
+.dark .raidah-why__feature-icon {
+    background: rgba(24, 154, 208, 0.07);
+}
+
+.dark .raidah-why__feature:hover .raidah-why__feature-icon {
+    background: rgba(24, 154, 208, 0.12);
+}
+
+/* ========================================
+   Responsive
+======================================== */
+
+@media (max-width: 1050px) {
+    .raidah-why {
+        padding: 105px 0 95px;
+    }
+
+    .raidah-why__header-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .raidah-why__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .raidah-why__feature:nth-child(2) {
+        border-inline-end: 0;
+    }
+
+    .raidah-why__feature:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .raidah-why__numbers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .raidah-why__number-item:nth-child(2)::after {
+        display: none;
+    }
+
+    .raidah-why__number-item:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--color-border);
+    }
+}
+
+@media (max-width: 700px) {
+    .raidah-why {
+        padding: 80px 0 70px;
+    }
+
+    .raidah-why__header {
+        margin-bottom: 48px;
+    }
+
+    .raidah-why__header-content p {
+        font-size: 0.95rem;
+    }
+
+    .raidah-why__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .raidah-why__feature {
+        min-height: 240px;
+        padding: 30px 24px 36px;
+        border-inline-end: 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .raidah-why__feature:last-child {
+        border-bottom: 0;
+    }
+
+    .raidah-why__feature-content p {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+
+    .raidah-why__numbers-header {
+        margin-top: 65px;
+    }
+
+    .raidah-why__number-item {
+        min-height: 170px;
+        padding: 26px 16px;
+    }
+
+    .raidah-why__number-item p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .raidah-why__container {
+        width: min(100% - 1.5rem, 1280px);
+    }
+
+    .raidah-why__numbers {
+        grid-template-columns: 1fr;
+    }
+
+    .raidah-why__number-item {
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .raidah-why__number-item:last-child {
+        border-bottom: 0;
+    }
+
+    .raidah-why__number-item::after {
+        display: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .raidah-why__feature,
+    .raidah-why__feature-icon,
+    .raidah-why__feature-line {
+        transition: none !important;
+    }
+
+    .raidah-why__feature:hover {
+        transform: none;
+    }
+
+    .raidah-why__feature:hover .raidah-why__feature-icon {
+        transform: none;
+    }
+
+    .raidah-why__feature:hover .raidah-why__feature-line {
+        width: 32px;
+    }
+}

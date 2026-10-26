@@ -1,0 +1,694 @@
+.raidah-hero {
+    position: relative;
+    isolation: isolate;
+    min-height: calc(100svh - 80px);
+    overflow: hidden;
+    background: #eef8fc;
+    color: #0f3550
+}
+
+.raidah-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -3
+}
+
+.raidah-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: scale(1.015);
+    animation: raidahHeroImage 1.4s cubic-bezier(.16, 1, .3, 1) both
+}
+
+.raidah-hero__image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(239, 249, 253, .98) 0%, rgba(239, 249, 253, .92) 31%, rgba(239, 249, 253, .54) 53%, rgba(239, 249, 253, .08) 78%, rgba(239, 249, 253, .18) 100%)
+}
+
+[dir=rtl] .raidah-hero__image-overlay {
+    background: linear-gradient(270deg, rgba(239, 249, 253, .98) 0%, rgba(239, 249, 253, .92) 31%, rgba(239, 249, 253, .54) 53%, rgba(239, 249, 253, .08) 78%, rgba(239, 249, 253, .18) 100%)
+}
+
+.dark .raidah-hero {
+    background: #06131b;
+    color: #f8fafc
+}
+
+.dark .raidah-hero__image-overlay {
+    background: linear-gradient(90deg, rgba(3, 18, 27, .98), rgba(3, 18, 27, .86) 35%, rgba(3, 18, 27, .5) 60%, rgba(3, 18, 27, .22))
+}
+
+.dark [dir=rtl] .raidah-hero__image-overlay {
+    background: linear-gradient(270deg, rgba(3, 18, 27, .98), rgba(3, 18, 27, .86) 35%, rgba(3, 18, 27, .5) 60%, rgba(3, 18, 27, .22))
+}
+
+.raidah-hero__image-glow {
+    position: absolute;
+    inset: auto -8% -22% 20%;
+    height: 48%;
+    background: radial-gradient(ellipse, rgba(24, 154, 208, .26), transparent 65%);
+    filter: blur(35px)
+}
+
+.raidah-hero__pattern {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    opacity: .25;
+    background-image: linear-gradient(rgba(24, 154, 208, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(24, 154, 208, .07) 1px, transparent 1px);
+    background-size: 68px 68px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), transparent 65%)
+}
+
+.raidah-hero__shape {
+    position: absolute;
+    z-index: -1;
+    left: -5%;
+    right: -5%;
+    bottom: -24%;
+    height: 45%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(234, 247, 252, .96));
+    border-radius: 50% 50% 0 0/28% 28% 0 0;
+    transform: rotate(-2deg)
+}
+
+.dark .raidah-hero__shape {
+    background: linear-gradient(180deg, transparent, rgba(5, 25, 35, .96))
+}
+
+.raidah-hero__inner {
+    min-height: calc(100svh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: clamp(4rem, 10vh, 7rem);
+    padding-bottom: 1.4rem
+}
+
+.raidah-hero__content {
+    width: min(760px, 65%);
+    animation: raidahHeroContent .85s .1s cubic-bezier(.16, 1, .3, 1) both
+}
+
+.raidah-hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #087fb2;
+    font-weight: 700;
+    font-size: .94rem;
+    margin-bottom: 1rem
+}
+
+.raidah-hero__eyebrow>span:first-child {
+    width: 42px;
+    height: 2px;
+    border-radius: 99px;
+    background: #189ad0
+}
+
+.raidah-hero h1 {
+    margin: 0;
+    font-size: clamp(2.6rem, 5.2vw, 5.3rem);
+    line-height: 1.06;
+    letter-spacing: -.045em;
+    font-weight: 850;
+    max-width: 850px
+}
+
+.raidah-hero__tagline {
+    margin: .8rem 0 1rem;
+    color: #189ad0;
+    font-size: clamp(1.45rem, 2.5vw, 2.45rem);
+    font-weight: 800;
+    line-height: 1.2
+}
+
+.raidah-hero__description {
+    max-width: 690px;
+    margin: 0;
+    color: #36576b;
+    font-size: clamp(1rem, 1.25vw, 1.18rem);
+    line-height: 2;
+    font-weight: 500
+}
+
+.dark .raidah-hero__description {
+    color: #c5d5df
+}
+
+.raidah-hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 1.8rem
+}
+
+.raidah-hero__primary,
+.raidah-hero__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    min-height: 54px;
+    padding: 0 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease
+}
+
+.raidah-hero__primary {
+    color: #fff;
+    background: #189ad0;
+    box-shadow: 0 15px 35px rgba(24, 154, 208, .25)
+}
+
+.raidah-hero__primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 42px rgba(24, 154, 208, .35)
+}
+
+.raidah-hero__secondary {
+    color: #0f4d6e;
+    background: rgba(255, 255, 255, .72);
+    border: 1px solid rgba(24, 154, 208, .34);
+    backdrop-filter: blur(12px)
+}
+
+.raidah-hero__secondary:hover {
+    transform: translateY(-3px);
+    background: #fff
+}
+
+.dark .raidah-hero__secondary {
+    color: #dff5ff;
+    background: rgba(5, 28, 39, .55)
+}
+
+.raidah-hero__play {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: #189ad0;
+    font-size: 1.25rem;
+    line-height: 1
+}
+
+.raidah-hero__bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 4rem
+}
+
+.raidah-hero__highlights {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: min(980px, 86%);
+    background: rgba(255, 255, 255, .7);
+    border: 1px solid rgba(255, 255, 255, .85);
+    backdrop-filter: blur(14px);
+    border-radius: 26px;
+    padding: 17px 10px;
+    box-shadow: 0 18px 50px rgba(20, 72, 94, .09);
+    animation: raidahHeroBottom .8s .45s cubic-bezier(.16, 1, .3, 1) both
+}
+
+.dark .raidah-hero__highlights {
+    background: rgba(5, 28, 39, .65);
+    border-color: rgba(255, 255, 255, .08)
+}
+
+.raidah-hero__highlight {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-inline-end: 1px solid rgba(24, 154, 208, .2)
+}
+
+.raidah-hero__highlight:last-child {
+    border-inline-end: 0
+}
+
+.raidah-hero__icon {
+    width: 43px;
+    height: 43px;
+    flex: 0 0 43px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: #189ad0;
+    background: #eaf7fc
+}
+
+.dark .raidah-hero__icon {
+    background: rgba(24, 154, 208, .13)
+}
+
+.raidah-hero__highlight strong,
+.raidah-hero__highlight span {
+    display: block
+}
+
+.raidah-hero__highlight strong {
+    font-size: .88rem
+}
+
+.raidah-hero__highlight span {
+    margin-top: 3px;
+    color: #668090;
+    font-size: .72rem;
+    line-height: 1.5
+}
+
+.dark .raidah-hero__highlight span {
+    color: #9db3c0
+}
+
+.raidah-hero__scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: #527184;
+    text-decoration: none;
+    font-size: .72rem;
+    font-weight: 700;
+    padding-bottom: 7px;
+    animation: raidahHeroBottom .8s .65s cubic-bezier(.16, 1, .3, 1) both
+}
+
+.raidah-hero__scroll svg {
+    color: #189ad0;
+    animation: raidahScroll 1.8s ease-in-out infinite
+}
+
+.dark .raidah-hero__scroll {
+    color: #9db3c0
+}
+
+.raidah-home-next {
+    padding: 100px 0;
+    background: #fff
+}
+
+.dark .raidah-home-next {
+    background: #07151d;
+    color: #fff
+}
+
+.raidah-home-next span {
+    color: #189ad0;
+    font-weight: 700
+}
+
+.raidah-home-next h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin: .5rem 0 0
+}
+
+@keyframes raidahHeroImage {
+    from {
+        opacity: 0;
+        transform: scale(1.08)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.015)
+    }
+}
+
+@keyframes raidahHeroContent {
+    from {
+        opacity: 0;
+        transform: translateY(28px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes raidahHeroBottom {
+    from {
+        opacity: 0;
+        transform: translateY(25px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes raidahScroll {
+
+    0%,
+    100% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(5px)
+    }
+}
+
+@media(max-width:900px) {
+    .raidah-hero__content {
+        width: min(720px, 100%)
+    }
+
+    .raidah-hero__image-overlay {
+        background: linear-gradient(180deg, rgba(239, 249, 253, .92) 0%, rgba(239, 249, 253, .72) 48%, rgba(239, 249, 253, .45) 100%)
+    }
+
+    .dark .raidah-hero__image-overlay {
+        background: linear-gradient(180deg, rgba(3, 18, 27, .94), rgba(3, 18, 27, .68) 55%, rgba(3, 18, 27, .5))
+    }
+
+    .raidah-hero__bottom {
+        flex-direction: column;
+        align-items: stretch
+    }
+
+    .raidah-hero__highlights {
+        width: 100%
+    }
+
+    .raidah-hero__scroll {
+        display: none
+    }
+}
+
+@media(max-width:640px) {
+
+    .raidah-hero,
+    .raidah-hero__inner {
+        min-height: calc(100svh - 72px)
+    }
+
+    .raidah-hero__inner {
+        padding-top: 3.5rem
+    }
+
+    .raidah-hero__content {
+        width: 100%
+    }
+
+    .raidah-hero h1 {
+        font-size: clamp(2.25rem, 11vw, 3.25rem)
+    }
+
+    .raidah-hero__tagline {
+        font-size: 1.35rem
+    }
+
+    .raidah-hero__description {
+        font-size: .92rem;
+        line-height: 1.9
+    }
+
+    .raidah-hero__actions {
+        flex-direction: column;
+        align-items: stretch
+    }
+
+    .raidah-hero__primary,
+    .raidah-hero__secondary {
+        width: 100%
+    }
+
+    .raidah-hero__highlights {
+        grid-template-columns: 1fr 1fr;
+        padding: 8px;
+        border-radius: 20px
+    }
+
+    .raidah-hero__highlight {
+        padding: 10px 8px;
+        border-inline-end: 0;
+        border-bottom: 1px solid rgba(24, 154, 208, .16)
+    }
+
+    .raidah-hero__highlight:nth-child(odd) {
+        border-inline-end: 1px solid rgba(24, 154, 208, .16)
+    }
+
+    .raidah-hero__highlight:nth-last-child(-n+2) {
+        border-bottom: 0
+    }
+
+    .raidah-hero__highlight strong {
+        font-size: .76rem
+    }
+
+    .raidah-hero__highlight span {
+        font-size: .62rem
+    }
+
+    .raidah-hero__icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        border-radius: 11px
+    }
+
+    .raidah-hero__shape {
+        bottom: -12%;
+        height: 34%
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .raidah-hero__media img,
+    .raidah-hero__content,
+    .raidah-hero__highlights,
+    .raidah-hero__scroll {
+        animation: none
+    }
+
+    .raidah-hero__primary,
+    .raidah-hero__secondary {
+        transition: none
+    }
+
+    .raidah-hero__scroll svg {
+        animation: none
+    }
+}
+
+
+/* =========================================================
+   HERO BUTTONS — PREMIUM SMOOTH MOTION
+========================================================= */
+
+.raidah-hero__primary,
+.raidah-hero__secondary {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    transform: translate3d(0, 0, 0);
+
+    transition:
+        transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 320ms ease,
+        border-color 320ms ease,
+        color 320ms ease;
+}
+
+/* محتوى الزر فوق التأثير */
+.raidah-hero__primary > *,
+.raidah-hero__secondary > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* تأثير ضوء خفيف يمر داخل الزر */
+.raidah-hero__primary::before,
+.raidah-hero__secondary::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -70%;
+
+    width: 45%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.22),
+        transparent
+    );
+
+    transform: skewX(-18deg);
+
+    transition:
+        left 650ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.raidah-hero__primary:hover,
+.raidah-hero__secondary:hover {
+    transform: translate3d(0, -3px, 0);
+}
+
+.raidah-hero__primary:hover::before,
+.raidah-hero__secondary:hover::before {
+    left: 125%;
+}
+
+/* =========================================================
+   PRIMARY
+========================================================= */
+
+.raidah-hero__primary {
+    background: #189ad0;
+
+    box-shadow:
+        0 8px 24px rgba(24, 154, 208, 0.20);
+}
+
+.raidah-hero__primary:hover {
+    background: #168fc2;
+
+    box-shadow:
+        0 14px 32px rgba(24, 154, 208, 0.28);
+}
+
+/* =========================================================
+   SECONDARY
+========================================================= */
+
+.raidah-hero__secondary {
+    color: #0f4d6e;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    border: 1px solid rgba(24, 154, 208, 0.28);
+
+    box-shadow:
+        0 6px 20px rgba(15, 77, 110, 0.06);
+
+    backdrop-filter: blur(12px);
+}
+
+.raidah-hero__secondary:hover {
+    color: #189ad0;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-color: rgba(24, 154, 208, 0.45);
+
+    box-shadow:
+        0 13px 30px rgba(15, 77, 110, 0.10);
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+.dark .raidah-hero__secondary {
+    color: #dff5ff;
+
+    background: rgba(5, 28, 39, 0.60);
+
+    border-color: rgba(24, 154, 208, 0.25);
+}
+
+.dark .raidah-hero__secondary:hover {
+    color: #ffffff;
+
+    background: rgba(7, 38, 52, 0.82);
+
+    border-color: rgba(24, 154, 208, 0.50);
+
+    box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.24);
+}
+
+/* =========================================================
+   CLICK
+========================================================= */
+
+.raidah-hero__primary:active,
+.raidah-hero__secondary:active {
+    transform: translate3d(0, -1px, 0) scale(0.985);
+
+    transition-duration: 100ms;
+}
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+========================================================= */
+
+.raidah-hero__primary:focus-visible,
+.raidah-hero__secondary:focus-visible {
+    outline: 3px solid rgba(24, 154, 208, 0.25);
+    outline-offset: 4px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+    .raidah-hero__primary:hover,
+    .raidah-hero__secondary:hover {
+        transform: translate3d(0, -2px, 0);
+    }
+
+    .raidah-hero__primary:active,
+    .raidah-hero__secondary:active {
+        transform: scale(0.98);
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .raidah-hero__primary,
+    .raidah-hero__secondary,
+    .raidah-hero__primary::before,
+    .raidah-hero__secondary::before {
+        transition: none;
+    }
+
+    .raidah-hero__primary:hover,
+    .raidah-hero__secondary:hover,
+    .raidah-hero__primary:active,
+    .raidah-hero__secondary:active {
+        transform: none;
+    }
+
+    .raidah-hero__primary::before,
+    .raidah-hero__secondary::before {
+        display: none;
+    }
+}

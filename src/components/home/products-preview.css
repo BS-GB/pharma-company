@@ -1,0 +1,593 @@
+.raidah-products-preview {
+    --slide-dir: 1;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0 130px;
+    background:
+        radial-gradient(circle at 10% 18%, rgba(24, 154, 208, .06), transparent 30%),
+        radial-gradient(circle at 92% 76%, rgba(24, 154, 208, .05), transparent 26%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9), transparent 60%),
+        linear-gradient(180deg, #fbfdfe 0%, #f5fafd 50%, #eef7fb 100%);
+    color: #0f3550;
+}
+
+[dir="rtl"] .raidah-products-preview,
+:root[dir="rtl"] .raidah-products-preview {
+    --slide-dir: -1;
+}
+
+.raidah-products-preview__ambient {
+    position: absolute;
+    width: 460px;
+    height: 460px;
+    inset-inline-end: -285px;
+    top: 210px;
+    border: 1px solid rgba(24, 154, 208, .075);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: raidahAmbientRotate 40s linear infinite;
+}
+
+.raidah-products-preview__ambient::before,
+.raidah-products-preview__ambient::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(24, 154, 208, .045);
+    border-radius: 50%;
+}
+
+.raidah-products-preview__ambient::before {
+    inset: 52px;
+}
+
+.raidah-products-preview__ambient::after {
+    inset: 105px;
+}
+
+@keyframes raidahAmbientRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.raidah-products-preview__container {
+    position: relative;
+    z-index: 2;
+    width: min(1520px, calc(100% - 40px));
+    margin-inline: auto;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.raidah-products-preview__header {
+    margin-bottom: 72px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.raidah-products-preview__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 8px 18px;
+    border: 1px solid rgba(24, 154, 208, .18);
+    border-radius: 999px;
+    background: rgba(24, 154, 208, .05);
+    color: #189ad0;
+    font-size: .72rem;
+    font-weight: 850;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+}
+
+[dir="rtl"] .raidah-products-preview__eyebrow {
+    letter-spacing: 0;
+}
+
+.raidah-products-preview__eyebrow-line {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #189ad0;
+    box-shadow: 0 0 0 4px rgba(24, 154, 208, .15);
+    animation: raidahEyebrowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes raidahEyebrowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 4px rgba(24, 154, 208, .15);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px rgba(24, 154, 208, .05);
+    }
+}
+
+.raidah-products-preview__heading-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 900px;
+}
+
+.raidah-products-preview__heading-row h2 {
+    max-width: 820px;
+    margin: 0;
+    color: #0f3550;
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: -.03em;
+    text-align: center;
+}
+
+.raidah-products-preview__heading-row h2 span {
+    background: linear-gradient(135deg, #189ad0 0%, #117eac 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.raidah-products-preview__heading-row p {
+    max-width: 680px;
+    margin: 0;
+    color: #6b8190;
+    font-size: .97rem;
+    line-height: 1.95;
+    text-align: center;
+}
+
+.raidah-products-preview__top-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 12px 26px;
+    border: 1px solid rgba(24, 154, 208, .25);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .6);
+    color: #189ad0;
+    text-decoration: none;
+    font-size: .85rem;
+    font-weight: 850;
+    backdrop-filter: blur(8px);
+    transition:
+        gap 400ms cubic-bezier(0.22, 1, 0.36, 1),
+        color 400ms ease,
+        background 400ms ease,
+        border-color 400ms ease,
+        box-shadow 400ms ease,
+        transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.raidah-products-preview__top-link:hover {
+    gap: 14px;
+    color: #fff;
+    background: linear-gradient(135deg, #189ad0, #117eac);
+    border-color: transparent;
+    box-shadow: 0 12px 30px rgba(24, 154, 208, .28);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   PRODUCT SHOWCASE — دخول تدريجي عند السكرول
+========================================================= */
+.raidah-products-preview__showcase {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+
+.raidah-product-card {
+    position: relative;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    transform: translate3d(calc(35px * var(--slide-dir)), 0, 0);
+    filter: blur(5px);
+    transition:
+        opacity 850ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 850ms cubic-bezier(0.16, 1, 0.3, 1),
+        filter 850ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--card-index, 0) * 95ms);
+    will-change: opacity, transform, filter;
+}
+
+/* تفعيل الدخول بمجرد وصول السكرول */
+.raidah-product-card.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+}
+
+.raidah-product-card:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -10px;
+    top: 15%;
+    bottom: 15%;
+    width: 1px;
+    background: linear-gradient(180deg,
+            transparent,
+            rgba(24, 154, 208, 0.15) 25%,
+            rgba(24, 154, 208, 0.20) 50%,
+            rgba(24, 154, 208, 0.15) 75%,
+            transparent);
+    transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.raidah-product-card:hover::before {
+    opacity: 0;
+    transform: scaleY(0.5);
+}
+
+/* =========================================================
+   CARD HOVER (سلس جداً في الصعود والعودة)
+========================================================= */
+.raidah-product-card__link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.raidah-product-card:hover .raidah-product-card__link {
+    transform: translateY(-6px);
+}
+
+.raidah-product-card__visual {
+    position: relative;
+    height: 240px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+
+.raidah-product-card__visual::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(24, 154, 208, 0.10);
+    background: radial-gradient(circle at 50% 50%, rgba(24, 154, 208, 0.06) 0%, transparent 70%);
+    transition:
+        transform 550ms cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 450ms ease,
+        background 450ms ease;
+}
+
+.raidah-product-card__link:hover .raidah-product-card__visual::before {
+    transform: scale(1.12);
+    border-color: rgba(24, 154, 208, 0.25);
+    background: radial-gradient(circle at 50% 50%, rgba(24, 154, 208, 0.12) 0%, transparent 70%);
+}
+
+.raidah-product-card__halo {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(24, 154, 208, .15) 0%, transparent 70%);
+    transform: scale(.85);
+    opacity: .7;
+    transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1), opacity 450ms ease;
+}
+
+.raidah-product-card__link:hover .raidah-product-card__halo {
+    transform: scale(1.30) translateY(-6px);
+    opacity: 1;
+}
+
+.raidah-product-card__image-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 4px;
+}
+
+.raidah-product-card__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: translate3d(0, 0, 0) scale(.92);
+    filter: drop-shadow(0 18px 28px rgba(15, 53, 80, .14));
+    transition:
+        transform 550ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 550ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.raidah-product-card__link:hover .raidah-product-card__image-wrap img {
+    transform: translate3d(0, -8px, 0) scale(1.10);
+    filter:
+        drop-shadow(0 32px 40px rgba(15, 53, 80, .22)) drop-shadow(0 12px 24px rgba(24, 154, 208, .12));
+}
+
+.raidah-product-card__index {
+    position: absolute;
+    inset-inline-start: 50%;
+    top: -8px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    border: 1px solid rgba(24, 154, 208, .18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .85);
+    color: rgba(24, 154, 208, .65);
+    font-size: .55rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    backdrop-filter: blur(8px);
+    transform: translate3d(-50%, 0, 0);
+    transition:
+        color 400ms ease,
+        border-color 400ms ease,
+        background 400ms ease,
+        transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.raidah-product-card__link:hover .raidah-product-card__index {
+    color: #fff;
+    background: #189ad0;
+    border-color: #189ad0;
+    transform: translate3d(-50%, -4px, 0);
+    box-shadow: 0 8px 20px rgba(24, 154, 208, .30);
+}
+
+.raidah-product-card__info {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-top: 28px;
+    text-align: center;
+    align-items: center;
+}
+
+.raidah-product-card__label {
+    display: block;
+    margin-bottom: 10px;
+    color: #189ad0;
+    font-size: .58rem;
+    font-weight: 900;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    transition: letter-spacing 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.raidah-product-card__link:hover .raidah-product-card__label {
+    letter-spacing: .2em;
+}
+
+.raidah-product-card__info h3 {
+    margin: 0;
+    color: #0f3550;
+    font-size: 1.02rem;
+    line-height: 1.4;
+    font-weight: 900;
+    transition: color 350ms ease;
+}
+
+.raidah-product-card__link:hover .raidah-product-card__info h3 {
+    color: #189ad0;
+}
+
+.raidah-product-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 18px;
+    color: #647d8c;
+    font-size: .68rem;
+    font-weight: 850;
+}
+
+.raidah-product-card__arrow {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(24, 154, 208, .20);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .8);
+    color: #189ad0;
+    backdrop-filter: blur(8px);
+    transition:
+        transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+        background 400ms ease,
+        color 400ms ease,
+        box-shadow 400ms ease;
+}
+
+.raidah-product-card__link:hover .raidah-product-card__arrow {
+    transform: translateX(calc(4px * var(--slide-dir))) rotate(calc(-8deg * var(--slide-dir))) scale(1.12);
+    background: linear-gradient(135deg, #189ad0, #117eac);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 12px 24px rgba(24, 154, 208, .35);
+}
+
+/* =========================================================
+   BOTTOM CTA
+========================================================= */
+.raidah-products-preview__bottom {
+    display: grid;
+    grid-template-columns: minmax(40px, 1fr) auto minmax(40px, 1fr);
+    align-items: center;
+    gap: 24px;
+    margin-top: 78px;
+}
+
+.raidah-products-preview__bottom-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(24, 154, 208, .25));
+}
+
+[dir="rtl"] .raidah-products-preview__bottom-line:first-child {
+    background: linear-gradient(90deg, rgba(24, 154, 208, .25), transparent);
+}
+
+.raidah-products-preview__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    border: 1px solid rgba(24, 154, 208, .18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .6);
+    color: #0f3550;
+    text-decoration: none;
+    font-size: .88rem;
+    font-weight: 850;
+    backdrop-filter: blur(8px);
+    transition:
+        color 400ms ease,
+        background 400ms ease,
+        border-color 400ms ease,
+        box-shadow 400ms ease,
+        transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.raidah-products-preview__cta:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #189ad0, #117eac);
+    border-color: transparent;
+    box-shadow: 0 12px 30px rgba(24, 154, 208, .28);
+    transform: translateY(-2px);
+}
+
+.raidah-products-preview__cta-icon {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(24, 154, 208, .20);
+    border-radius: 50%;
+    color: #189ad0;
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.raidah-products-preview__cta:hover .raidah-products-preview__cta-icon {
+    transform: translateX(calc(4px * var(--slide-dir)));
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+.dark .raidah-products-preview {
+    background:
+        radial-gradient(circle at 10% 18%, rgba(24, 154, 208, .08), transparent 30%),
+        radial-gradient(circle at 92% 76%, rgba(24, 154, 208, .06), transparent 26%),
+        linear-gradient(180deg, #07151d 0%, #091c26 50%, #0a202b 100%);
+    color: #f8fafc;
+}
+
+.dark .raidah-products-preview__heading-row h2,
+.dark .raidah-product-card__info h3,
+.dark .raidah-products-preview__cta {
+    color: #f3f8fa;
+}
+
+.dark .raidah-products-preview__heading-row p,
+.dark .raidah-product-card__footer {
+    color: #9db3c0;
+}
+
+.dark .raidah-product-card__index {
+    background: rgba(8, 30, 40, .8);
+    border-color: rgba(24, 154, 208, .20);
+    color: rgba(66, 181, 227, .7);
+}
+
+.dark .raidah-product-card__arrow {
+    background: rgba(8, 30, 40, .6);
+    border-color: rgba(24, 154, 208, .25);
+}
+
+.dark .raidah-products-preview__cta {
+    background: rgba(8, 30, 40, .6);
+    border-color: rgba(24, 154, 208, .20);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 1200px) {
+    .raidah-products-preview__showcase {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .raidah-product-card:nth-child(3n + 1)::before {
+        display: none;
+    }
+
+    .raidah-product-card:not(:nth-child(3n + 1))::before {
+        display: block;
+    }
+}
+
+@media (max-width: 720px) {
+    .raidah-products-preview__showcase {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .raidah-product-card:nth-child(2n + 1)::before {
+        display: none;
+    }
+
+    .raidah-product-card:not(:nth-child(2n + 1))::before {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    .raidah-products-preview__showcase {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .raidah-product-card::before {
+        display: none !important;
+    }
+
+    .raidah-product-card:not(:first-child)::before {
+        display: block !important;
+        inset-inline-start: 0;
+        top: -20px;
+        bottom: auto;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(24, 154, 208, 0.20) 50%, transparent);
+    }
+}
