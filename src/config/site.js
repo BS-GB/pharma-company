@@ -1,4 +1,7 @@
-﻿export const siteConfig = {
+﻿// 1. استيراد الصورة في أول سطر ليتولى Vite ضغطها وتضمينها تلقائياً
+import alraidahLogo from "../assets/logo/alraidah-logo.jpg";
+
+export const siteConfig = {
   name: {
     ar: "الرائدة",
     en: "AL-Raidah",
@@ -9,7 +12,8 @@
     en: "AL-Raidah Pharmaceutical",
   },
 
-  logo: "/src/assets/logo/alraidah-logo.jpg",
+
+  logo: alraidahLogo,
 
   colors: {
     primary: "#189AD0",
@@ -17,15 +21,12 @@
   },
 
   defaultLanguage: "ar",
-
   defaultTheme: "light",
-
   supportedLanguages: ["ar", "en"],
-
   supportedThemes: ["light", "dark"],
 
   direction: {
     ar: "rtl",
     en: "ltr",
   },
-}
+};

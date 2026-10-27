@@ -9,13 +9,13 @@ export default function SplashScreen() {
     const [isFused, setIsFused] = useState(false)
     const [closing, setClosing] = useState(false)
 
-    // الكلمة المتصلة النهائية
+   
     const brandName = isArabic ? "الرائدة" : "AL-Raidah"
 
     // مصفوفة الحروف المنفصلة التي ستنبثق حرفاً تلو الآخر
     const letters = useMemo(() => {
         if (isArabic) {
-            // أحرف منفصلة صريحة تظهر بشكل: ا ل ر ا ئ د ة
+            
             return ["ا", "ل", "ر", "ا", "ئ", "د", "ة"]
         }
         return Array.from("AL-Raidah")
@@ -29,18 +29,18 @@ export default function SplashScreen() {
             return
         }
 
-        // 1. تفعيل اندماج الحروف لتصبح "الرائدة" المتصلة (بعد خروج واستقرار الحرف الأخير)
+        
         const fuseTimer = setTimeout(() => {
             setIsFused(true)
         }, 1850)
 
-        // 2. بدء خروج شاشة الـ Splash وفتح الستار لدخول الموقع
+      
         const closeTimer = setTimeout(() => {
             setClosing(true)
             document.body.classList.add("raidah-splash-complete")
         }, 3300)
 
-        // 3. إزالة الـ Splash نهائياً من الـ DOM
+       
         const removeTimer = setTimeout(() => {
             sessionStorage.setItem("alraidah-splash-seen", "true")
             setVisible(false)
